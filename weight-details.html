@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Details</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #FFFAF0, #F7D6D7, #F5A623); /* Soft gradient */
+            height: 100vh; margin: 0; font-family: Arial, sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            color: #333; text-align: center;
+        }
+        form {
+            padding: 20px; border-radius: 8px;
+            width: 100%; max-width: 400px;
+            background: rgba(255, 255, 255, 0.9); /* Subtle background color */
+        }
+        h1 { font-size: 2.5em; margin-bottom: 20px; }
+        label {
+            font-size: 1.2em; margin-bottom: 10px; display: block;
+            text-align: left; margin-left: auto; margin-right: auto;
+            width: fit-content;
+        }
+        input[type="number"] {
+            width: 100%; padding: 12px; margin-bottom: 20px;
+            border: 2px solid #F5A623; border-radius: 5px;
+            font-size: 1em; box-sizing: border-box;
+        }
+        button {
+            background-color: #F5A623; color: #fff; padding: 12px;
+            border: none; border-radius: 5px; cursor: pointer;
+            font-size: 1.2em; transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        button:hover { background-color: #F3A22E; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Weight Details</h1>
+        <form action="generate-plan.html" method="get">
+            <label for="current-weight">Current Weight (kg):</label>
+            <input type="number" id="current-weight" name="current_weight" required>
+
+            <label for="goal-weight">Goal Weight (kg):</label>
+            <input type="number" id="goal-weight" name="goal_weight" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet & Fitness Plan</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #e8c9c9, #f3d2d2);
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        select, button {
+            font-size: 1em;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 2px solid #f8c471;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background-color: #fad0c4;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #f9a6a8;
+        }
+        select:focus {
+            border-color: #ff7f7f;
+        }
+        .results {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the start (left) */
+        }
+        .diet-plan, .fitness-plan {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            text-align: left; /* Align text to the left */
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        ul {
+            list-style: disc;
+            padding: 0 20px;
+            margin: 0;
+            font-size: 1em;
+        }
+        li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Dietary Preference and Fitness Goal</h1>
+        <form id="dietForm">
+            <select id="diet" required>
+                <option value="" disabled selected>Select your dietary preference</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="gluten-free">Gluten-free</option>
+                <option value="non-vegetarian">Non-Vegetarian</option>
+            </select>
+            <select id="fitnessGoal" required>
+                <option value="" disabled selected>Select your fitness goal</option>
+                <option value="weight-loss">Weight Loss</option>
+                <option value="muscle-gain">Muscle Gain</option>
+                <option value="endurance">Endurance</option>
+            </select>
+            <button type="button" id="generateButton" onclick="generatePlan()">Generate Plan</button>
+        </form>
+        <div id="output" style="display: none;" class="results">
+            <div class="diet-plan">
+                <h2>Diet Plan:</h2>
+                <ul id="diet-plan"></ul>
+            </div>
+            <div class="fitness-plan">
+                <h2>Fitness Plan:</h2>
+                <ul id="fitness-plan"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generatePlan() {
+            // Get form values
+            const dietType = document.getElementById('diet').value;
+            const fitnessGoal = document.getElementById('fitnessGoal').value;
+            
+            // Initialize plans
+            let dietPlan = [];
+            let fitnessPlan = [];
+            
+            // Determine diet plan
+            switch (dietType) {
+                case 'vegetarian':
+                    dietPlan = [
+                        'Eat more plant-based protein sources like beans, lentils, and tofu.',
+                        'Increase fiber intake through fruits, vegetables, and whole grains.',
+                        'Drink at least 8 glasses of water per day.',
+                        'Avoid processed foods and sugary drinks.',
+                        'Eat complex carbohydrates like brown rice, quinoa, and whole wheat.',
+                        'Limit intake of saturated fats and cholesterol.'
+                    ];
+                    break;
+                case 'vegan':
+                    dietPlan = [
+                        'Eat more plant-based protein sources like beans, lentils, tofu, and tempeh.',
+                        'Increase fiber intake through fruits, vegetables, and whole grains.',
+                        'Drink at least 8 glasses of water per day.',
+                        'Avoid processed foods and sugary drinks.',
+                        'Ensure adequate intake of vitamin B12 and iron through fortified foods or supplements.',
+                        'Eat complex carbohydrates like brown rice, quinoa, and whole wheat.',
+                        'Increase intake of omega-3 fatty acids through flaxseeds, chia seeds, and walnuts.'
+                    ];
+                    break;
+                case 'gluten-free':
+                    dietPlan = [
+                        'Eat lean protein sources like chicken, fish, and turkey.',
+                        'Increase fiber intake through fruits, vegetables, and gluten-free whole grains.',
+                        'Drink at least 8 glasses of water per day.',
+                        'Avoid processed foods and sugary drinks.',
+                        'Choose gluten-free complex carbohydrates like brown rice, quinoa, and gluten-free oats.',
+                        'Increase intake of healthy fats through nuts, seeds, and avocados.'
+                    ];
+                    break;
+                case 'non-vegetarian':
+                    dietPlan = [
+                        'Eat lean protein sources like chicken, fish, turkey, and eggs.',
+                        'Increase fiber intake through fruits, vegetables, and whole grains.',
+                        'Drink at least 8 glasses of water per day.',
+                        'Avoid processed foods and sugary drinks.',
+                        'Increase omega-3 fatty acid intake through fatty fish like salmon and mackerel.',
+                        'Eat complex carbohydrates like brown rice, quinoa, and whole wheat.',
+                        'Limit intake of saturated fats and cholesterol.'
+                    ];
+                    break;
+            }
+            
+            // Determine fitness plan
+            switch (fitnessGoal) {
+                case 'weight-loss':
+                    fitnessPlan = [
+                        'Monday: Cardio (30 minutes) + Full-Body Strength Training (3 sets of 12 reps).',
+                        'Tuesday: HIIT (20 minutes) + Core Exercises (3 sets of 15 reps).',
+                        'Wednesday: Rest day or light walk.',
+                        'Thursday: Cardio (30 minutes) + Lower Body Strength Training (3 sets of 12 reps).',
+                        'Friday: HIIT (20 minutes) + Full-Body Stretching (15 minutes).',
+                        'Saturday: Cardio (45 minutes).',
+                        'Sunday: Rest day.'
+                    ];
+                    break;
+                case 'muscle-gain':
+                    fitnessPlan = [
+                        'Monday: Chest and Triceps (4 sets of 8-10 reps).',
+                        'Tuesday: Back and Biceps (4 sets of 8-10 reps).',
+                        'Wednesday: Rest or light cardio (20 minutes).',
+                        'Thursday: Legs (4 sets of 8-10 reps).',
+                        'Friday: Shoulders and Abs (4 sets of 8-10 reps).',
+                        'Saturday: Cardio (30 minutes) + Abs (3 sets of 15 reps).',
+                        'Sunday: Rest day.'
+                    ];
+                    break;
+                case 'endurance':
+                    fitnessPlan = [
+                        'Monday: Long-distance Run (60 minutes).',
+                        'Tuesday: Full-Body Strength Training (4 sets of 15 reps).',
+                        'Wednesday: Interval Training (30 minutes).',
+                        'Thursday: Cross-Training (45 minutes).',
+                        'Friday: Long-distance Bike Ride (60 minutes).',
+                        'Saturday: High-Intensity Interval Training (HIIT) (30 minutes).',
+                        'Sunday: Rest day or gentle yoga.'
+                    ];
+                    break;
+            }
+            
+            // Display results
+            document.getElementById('diet-plan').innerHTML = dietPlan.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('fitness-plan').innerHTML = fitnessPlan.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('output').style.display = 'block';
+            
+            // Hide the generate button and dropdowns
+            document.getElementById('generateButton').style.display = 'none';
+            document.getElementById('diet').style.display = 'none';
+            document.getElementById('fitnessGoal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

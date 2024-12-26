@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; margin: 0; font-family: Arial, sans-serif; background: #fff;
+        }
+        form {
+            text-align: center; width: 100%; max-width: 400px;
+        }
+        input, button {
+            width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px;
+            border: 1px solid #ccc; box-sizing: border-box;
+        }
+        button {
+            background: #87CEFA; color: white; cursor: pointer; transition: 0.3s;
+        }
+        button:hover { background: #5ab4e6; }
+        a { color: #00008B; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <form action="register.php" method="post">
+        <h1>Register to continue</h1>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit">Get Started</button>
+        <p><a href="login.html">Already registered? Login</a></p>
+    </form>
+</body>
+</html>
